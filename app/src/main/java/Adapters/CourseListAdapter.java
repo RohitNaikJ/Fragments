@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.rohit.fragmentstutorial.CourseEntry;
 import com.rohit.fragmentstutorial.R;
 
 import java.util.List;
+
+import ListItems.CourseEntry;
 
 /**
  * Created by Rohit on 2/29/16.

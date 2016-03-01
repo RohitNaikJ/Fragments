@@ -1,4 +1,4 @@
-package com.rohit.fragmentstutorial;
+package Fragments;
 
 
 import android.app.Fragment;
@@ -17,6 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.rohit.fragmentstutorial.MainActivity;
+import com.rohit.fragmentstutorial.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.CourseListAdapter;
+import ListItems.CourseEntry;
 
 
 /**
@@ -74,9 +77,9 @@ public class CoursesFragment extends Fragment {
                                 CourseListAdapter courseListAdapter = new CourseListAdapter(getActivity(), courseEntries);
                                 courseListAdapter.setActivity(getActivity());
                                 courseListAdapter.setCourseEntries(courseEntries);
-
                                 ArrayAdapter<CourseEntry> adapter = courseListAdapter;
                                 listView.setAdapter(adapter);
+
                             } catch (JSONException e) {
                                 Toast.makeText(getActivity(), "JSONObjectException:\n"+e.getMessage()+"\nUser not loged in." +
                                         "\nPlease login and try again", Toast.LENGTH_LONG).show();

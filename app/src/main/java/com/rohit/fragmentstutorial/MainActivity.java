@@ -16,9 +16,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Fragments.MenuFragment;
+
 public class MainActivity extends AppCompatActivity {
 
-    public static String ip = "http://192.168.1.6:8000";
+    public static String ip = "http://172.20.10.2:8000";
     SharedPreferences sharedPreferences;
 //    public static CookieManager manager;
 
