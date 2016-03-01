@@ -38,7 +38,7 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_login, container, false);
+        View rootView = null;  //inflater.inflate(R.layout.fragment_login, container, false);
 
         sp = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         editor = sp.edit();

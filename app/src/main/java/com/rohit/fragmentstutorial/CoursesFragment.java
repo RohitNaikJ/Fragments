@@ -43,8 +43,8 @@ public class CoursesFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_courses, container, false);
         final ListView listView = (ListView)rootView.findViewById(R.id.listView_courses);
@@ -55,7 +55,7 @@ public class CoursesFragment extends Fragment {
         if(sp.getBoolean("ISLOGIN", false)){
             String url = MainActivity.ip+"/courses/list.json";
             //final CourseList[] c = new CourseList[1];
-            Toast.makeText(getActivity(), "Retrieving Courses", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Retrieving Courses", Toast.LENGTH_SHORT).show();
             JsonObjectRequest jsonRequest = new JsonObjectRequest
                     (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                         @Override
