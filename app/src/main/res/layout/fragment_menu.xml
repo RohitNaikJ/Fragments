@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:context="com.rohit.fragmentstutorial.MenuFragment">
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="LogIn"
+        android:id="@+id/btn_login"
+        android:layout_weight="1"
+        android:background="@drawable/menu_background" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Courses"
+        android:layout_weight="1"
+        android:background="@drawable/menu_background"
+        android:id="@+id/btn_courses" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Grades"
+        android:id="@+id/btn_grades"
+        android:layout_weight="1"
+        android:background="@drawable/menu_background" />
+</LinearLayout>
