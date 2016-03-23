@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragment = new CoursesFragment();
-                fragmentTransaction = getFragmentManager().beginTransaction().add(R.id.container, fragment);
+                fragmentTransaction = getFragmentManager().beginTransaction().replace(R.id.container, fragment);
                 fragmentTransaction.commit();
             }
         });
@@ -51,7 +51,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragment = new GradesFragment();
-                fragmentTransaction = getFragmentManager().beginTransaction().add(R.id.container, fragment);
+                fragmentTransaction = getFragmentManager().beginTransaction().replace(R.id.container, fragment);
                 fragmentTransaction.commit();
             }
         });
@@ -60,7 +60,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 fragment = new NotificationsFragment();
-                fragmentTransaction = getFragmentManager().beginTransaction().add(R.id.container, fragment);
+                fragmentTransaction = getFragmentManager().beginTransaction().replace(R.id.container, fragment);
                 fragmentTransaction.commit();
             }
         });

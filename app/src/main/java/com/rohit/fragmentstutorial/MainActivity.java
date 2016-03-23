@@ -20,7 +20,7 @@ import Fragments.MenuFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String ip = "http://172.20.10.2:8000";
+    public static String ip = "http://10.192.57.238:8000";
     SharedPreferences sharedPreferences;
 //    public static CookieManager manager;
 

@@ -30,6 +30,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CourseActivity"
+            android:label="@string/title_activity_course"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="course_activity.OverviewActivity"
+            android:label="@string/title_activity_overview"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="course_activity.AssignmentsActivity"
+            android:label="@string/title_activity_assignments"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="course_activity.ThreadsActivity"
+            android:label="@string/title_activity_threads"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="course_activity.GradesActivity"></activity>
     </application>
 
 </manifest>
