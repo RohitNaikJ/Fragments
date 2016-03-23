@@ -46,7 +46,7 @@
             android:name="course_activity.ThreadsActivity"
             android:label="@string/title_activity_threads"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="course_activity.GradesActivity"></activity>
+        <activity android:name="course_activity.GradesActivity" />
     </application>
 
 </manifest>

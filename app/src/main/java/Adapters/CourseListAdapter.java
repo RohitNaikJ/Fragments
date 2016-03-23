@@ -46,7 +46,7 @@ public class CourseListAdapter extends ArrayAdapter<CourseEntry> {
         id.setText(currentCourse.getId()+"");
 
         TextView code = (TextView)itemView.findViewById(R.id.course_code);
-        code.setText(currentCourse.getCode());
+        code.setText(currentCourse.getCode().toUpperCase());
 
         TextView name = (TextView)itemView.findViewById(R.id.course_name);
         name.setText(currentCourse.getName());

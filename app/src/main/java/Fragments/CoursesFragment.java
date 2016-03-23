@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -80,8 +79,7 @@ public class CoursesFragment extends Fragment {
                                 CourseListAdapter courseListAdapter = new CourseListAdapter(getActivity(), courseEntries);
                                 courseListAdapter.setActivity(getActivity());
                                 courseListAdapter.setCourseEntries(courseEntries);
-                                ArrayAdapter<CourseEntry> adapter = courseListAdapter;
-                                listView.setAdapter(adapter);
+                                listView.setAdapter(courseListAdapter);
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

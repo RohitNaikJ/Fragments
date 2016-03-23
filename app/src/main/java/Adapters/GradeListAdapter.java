@@ -50,7 +50,7 @@ public class GradeListAdapter extends ArrayAdapter<GradeEntry> {
 
         //associating views of the layout item.grade with gradeEntry variable, i.e., populating the itemView
         TextView code = (TextView)itemView.findViewById(R.id.grade_code);
-        code.setText(gradeEntry.getCode());
+        code.setText(gradeEntry.getCode().toUpperCase());
 
         TextView name = (TextView)itemView.findViewById(R.id.grade_name);
         name.setText(gradeEntry.getName());
