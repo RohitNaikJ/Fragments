@@ -14,6 +14,9 @@ public class AssignmentEntry {
         this.deadline = deadline;
     }
 
+    public AssignmentEntry() {
+    }
+
     public int getId() {
         return id;
     }

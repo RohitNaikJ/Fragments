@@ -2,7 +2,7 @@ package Fragments;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +44,6 @@ public class AssignmentsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Toast.makeText(getActivity(), "AssignmentsFragment", Toast.LENGTH_SHORT).show();
         View rootView = inflater.inflate(R.layout.fragment_assignments, container, false);
         final ListView listView = (ListView) rootView.findViewById(R.id.listView_assignments);
 
@@ -60,6 +59,7 @@ public class AssignmentsFragment extends Fragment {
                             JSONArray assignments = response.getJSONArray("assignments");
 
                             assignEntries = new ArrayList<>();
+                            assignEntries.add(new AssignmentEntry());
                             for(int i=0; i<assignments.length(); i++)
                                 assignEntries.add(new AssignmentEntry(assignments.getJSONObject(i).getInt("id"), assignments.getJSONObject(i).getString("name"), assignments.getJSONObject(i).getString("deadline")));
 

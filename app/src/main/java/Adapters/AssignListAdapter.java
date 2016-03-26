@@ -2,6 +2,7 @@ package Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -47,16 +48,24 @@ public class AssignListAdapter extends ArrayAdapter<AssignmentEntry>{
 
         AssignmentEntry assignmentEntry = assignEntries.get(position);
 
-        TextView id = (TextView) itemView.findViewById(R.id.assign_id);
-        id.setText(assignmentEntry.getId()+"");
+        if(position!=0) {
+            TextView id = (TextView) itemView.findViewById(R.id.assign_id);
+            id.setText(assignmentEntry.getId() + "");
 
-        TextView name = (TextView) itemView.findViewById(R.id.assign_name);
-        name.setText(assignmentEntry.getName());
+            TextView name = (TextView) itemView.findViewById(R.id.assign_name);
+            name.setText(assignmentEntry.getName());
 
-        TextView deadline = (TextView) itemView.findViewById(R.id.assign_deadline);
-        String d = assignmentEntry.getDeadline();
-        deadline.setText(d.substring(0, 10)+"\n"+d.substring(11));
-
+            TextView deadline = (TextView) itemView.findViewById(R.id.assign_deadline);
+            String d = assignmentEntry.getDeadline();
+            deadline.setText(d.substring(0, 10) + "\n" + d.substring(11));
+        }else{
+            TextView id = (TextView) itemView.findViewById(R.id.assign_id);
+            id.setTypeface(null, Typeface.BOLD);
+            TextView name = (TextView) itemView.findViewById(R.id.assign_name);
+            name.setTypeface(null, Typeface.BOLD);
+            TextView deadline = (TextView) itemView.findViewById(R.id.assign_deadline);
+            deadline.setTypeface(null, Typeface.BOLD);
+        }
         return itemView;
     }
 }
