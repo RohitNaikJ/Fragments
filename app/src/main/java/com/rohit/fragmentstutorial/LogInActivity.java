@@ -27,6 +27,7 @@ public class LogInActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     CookieManager manager;
+    String url = MainActivity.ip + "/default/login.json?userid=cs1110200&password=john";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +42,37 @@ public class LogInActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
 
         if(sharedPreferences.getBoolean("ISLOGIN", false)){
-            Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-            intent.putExtra("ALREADYLOGEDIN", true);
-            startActivity(intent);
+            JsonObjectRequest jsonRequest = new JsonObjectRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            // the response is already constructed as a JSONObject!
+                            try {
+                                if (response.getBoolean("success")) {
+                                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                } else
+                                    Toast.makeText(LogInActivity.this, "LogIn Unsuccessful", Toast.LENGTH_LONG).show();
+                            } catch (JSONException e) {
+                                Toast.makeText(LogInActivity.this, "JSONObjectException:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(LogInActivity.this, "OnErrorResponse:\n" + error.getMessage(), Toast.LENGTH_LONG).show();
+                            error.printStackTrace();
+                        }
+                    });
+            Volley.newRequestQueue(LogInActivity.this).add(jsonRequest);
         }
 
         Button login = (Button)findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String url = MainActivity.ip + "/default/login.json?userid=cs1110200&password=john";
                 Toast.makeText(LogInActivity.this, "Connecting to the server", Toast.LENGTH_SHORT).show();
                 JsonObjectRequest jsonRequest = new JsonObjectRequest
                         (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -70,7 +92,6 @@ public class LogInActivity extends AppCompatActivity {
                                         editor.commit();
 
                                         Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-                                        intent.putExtra("ALREADYLOGEDIN", false);
                                         startActivity(intent);
                                     } else
                                         Toast.makeText(LogInActivity.this, "LogIn Unsuccessful", Toast.LENGTH_LONG).show();

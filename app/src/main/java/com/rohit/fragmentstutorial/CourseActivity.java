@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
-import android.widget.Toast;
 
 import Fragments.AssignmentsFragment;
 import Fragments.CourseGradesFragment;
@@ -25,8 +24,6 @@ public class CourseActivity extends FragmentActivity {
         setContentView(R.layout.activity_course);
 
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
-        if(mTabHost==null)
-            Toast.makeText(this," mTabHost is null",Toast.LENGTH_SHORT).show();
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
 
         mTabHost.addTab(
