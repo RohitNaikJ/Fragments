@@ -1,13 +1,14 @@
 <resources>
-    <string name="app_name">Fragments Tutorial</string>
+    <string name="app_name">Moodle +</string>
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_log_in">LogInActivity</string>
-    <string name="title_activity_course">CourseActivity</string>
+    <string name="title_activity_log_in">Login</string>
+    <string name="title_activity_course">Courses</string>
     <string name="title_activity_overview">OverviewActivity</string>
     <string name="title_activity_assignments">AssignmentsActivity</string>
     <string name="title_activity_threads">ThreadsActivity</string>
+    <string name="action_logout">Logout</string>
 </resources>

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,7 +29,6 @@ public class LogInActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     CookieManager manager;
-    String url = MainActivity.ip + "/default/login.json?userid=cs1110200&password=john";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,19 @@ public class LogInActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         manager = new CookieManager();
         CookieHandler.setDefault(manager);
+        final TextView username = (TextView) findViewById(R.id.username);
+        final TextView password = (TextView) findViewById(R.id.password);
+        final CheckBox rememberMe = (CheckBox) findViewById(R.id.remember_login);
+
+        final String[] url = new String[1];
 
         sharedPreferences = getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         if(sharedPreferences.getBoolean("ISLOGIN", false)){
+            url[0] = MainActivity.ip + "/default/login.json?userid="+sharedPreferences.getString("USERNAME","cs1110200")+"&password="+sharedPreferences.getString("PASSWORD", "john");
             JsonObjectRequest jsonRequest = new JsonObjectRequest
-                    (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    (Request.Method.GET, url[0], null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             // the response is already constructed as a JSONObject!
@@ -73,9 +80,10 @@ public class LogInActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                url[0] = MainActivity.ip + "/default/login.json?userid="+username.getText().toString()+"&password="+password.getText().toString();
                 Toast.makeText(LogInActivity.this, "Connecting to the server", Toast.LENGTH_SHORT).show();
                 JsonObjectRequest jsonRequest = new JsonObjectRequest
-                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                        (Request.Method.GET, url[0], null, new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
                                 // the response is already constructed as a JSONObject!
@@ -83,7 +91,8 @@ public class LogInActivity extends AppCompatActivity {
                                     if (response.getBoolean("success")) {
                                         Toast.makeText(LogInActivity.this, "LogIn Successful", Toast.LENGTH_SHORT).show();
                                         JSONObject userDetails = response.getJSONObject("user");
-                                        editor.putBoolean("ISLOGIN", true);
+                                        if(rememberMe.isChecked())
+                                            editor.putBoolean("ISLOGIN", true);
                                         editor.putString("NAME", userDetails.getString("first_name") + " " + userDetails.getString("last_name"));
                                         editor.putString("EMAIL", userDetails.getString("email"));
                                         editor.putString("USERNAME", userDetails.getString("username"));
@@ -112,5 +121,4 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
     }
-
 }

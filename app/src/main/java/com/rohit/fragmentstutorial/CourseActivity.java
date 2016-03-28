@@ -2,15 +2,15 @@ package com.rohit.fragmentstutorial;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v7.app.AppCompatActivity;
 
 import Fragments.AssignmentsFragment;
 import Fragments.CourseGradesFragment;
 import Fragments.OverviewFragment;
 import Fragments.ThreadsFragment;
 
-public class CourseActivity extends FragmentActivity {
+public class CourseActivity extends AppCompatActivity {
 
     private FragmentTabHost mTabHost;
 
@@ -22,6 +22,8 @@ public class CourseActivity extends FragmentActivity {
         Intent intent = getIntent();
         code = intent.getStringExtra("COURSE_CODE");
         setContentView(R.layout.activity_course);
+
+        getSupportActionBar().setTitle(code.toUpperCase());
 
         mTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);

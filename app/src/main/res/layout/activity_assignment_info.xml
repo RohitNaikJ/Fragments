@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rohit.fragmentstutorial.AssignmentInfo">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Project Submission 1: Draft Requirement Document"
+        android:id="@+id/assgn_name"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:gravity="center_horizontal" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fillViewport="false">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="&quot;&lt;p>&lt;br>&lt;/p>&lt;p>Organise 2 hr meeting of the team to&lt;/p>&lt;p>-Choose one of the Projects discussed in the class&lt;/p>&lt;p>-Discuss the specification of the selected project. Identify the aspects to be explored by team members&amp;nbsp;&lt;/p>&lt;p>-Document the discussion and the initial specs of the project&lt;/p>&lt;p>&lt;br>&lt;/p>&lt;p>Organise 2nd 2 hr meeting &amp;nbsp;to&lt;/p>&lt;p>-Share the homework done by each team member&lt;/p>&lt;p>-Discuss and finalise the specs of the projects&lt;/p>&lt;p>-Prepare 1 or 2 page document on the draft project specification&amp;nbsp;&lt;/p>&lt;p>&lt;br>&lt;/p>&lt;p>Submit the draft Project Requirement Document by Wednesday mid night.&lt;/p>&lt;p>Add title of the project in the group excel sheet&lt;/p>&quot;"
+            android:id="@+id/assgn_description"
+            android:layout_gravity="center_horizontal" />
+    </ScrollView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Created At"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016-01-14 17:02:44"
+                android:id="@+id/assgn_createdAt" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Deadline"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2016-02-14 17:02:44"
+                android:id="@+id/assgn_deadline" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Late Days Allowed"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/assgn_days_allowed" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Submission"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:layout_weight="1" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Browse"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

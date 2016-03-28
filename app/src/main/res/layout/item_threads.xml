@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:orientation="horizontal"
+    tools:context="Fragments.ThreadsFragment">
+
+
+    <TextView
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="S.No."
+        android:id="@+id/threads_id"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Title"
+        android:id="@+id/threads_title"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:capitalize="words" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Updated On"
+        android:id="@+id/threads_updatedOn"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center" />
+</LinearLayout>
