@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -44,8 +46,8 @@ public class ThreadsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
+                             final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_threads, container, false);
         listView = (ListView) rootView.findViewById(R.id.listView_threads);
@@ -100,6 +102,41 @@ public class ThreadsFragment extends Fragment {
                 });
 
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
+
+        Button newThread = (Button) rootView.findViewById(R.id.button3);
+        newThread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = MainActivity.ip+"/threads/new.json?title="+((TextView)rootView.findViewById(R.id.thread_new_title)).getText().toString()+"&description="+((TextView)rootView.findViewById(R.id.thread_new_desc)).getText().toString()+"&course_code="+CourseActivity.code;
+                JsonObjectRequest jsonRequest = new JsonObjectRequest
+                        (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                // the response is already constructed as a JSONObject!
+                                try {
+                                    Boolean success = response.getBoolean("success");
+                                    if(success){
+                                        Toast.makeText(getActivity(), "New Thread Added", Toast.LENGTH_SHORT).show();
+                                        onCreateView(inflater, container, savedInstanceState);
+                                    }else
+                                        Toast.makeText(getActivity(), "New Thread Addition Unsuccessful.\nPlease, Try Again.", Toast.LENGTH_SHORT).show();
+                                } catch (JSONException e) {
+                                    Toast.makeText(getActivity(), "JSONObjectException:\n" + e.getMessage() + "\nUser not loged in." +
+                                            "\nPlease login and try again", Toast.LENGTH_LONG).show();
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getActivity(), "ErrorResponse:\n"+error.getMessage(), Toast.LENGTH_LONG).show();
+                                error.printStackTrace();
+                            }
+                        });
+
+                Volley.newRequestQueue(getActivity()).add(jsonRequest);
+            }
+        });
 
         return  rootView;
     }

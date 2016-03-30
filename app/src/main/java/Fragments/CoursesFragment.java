@@ -57,7 +57,7 @@ public class CoursesFragment extends Fragment {
         sp = getActivity().getSharedPreferences("MYPREFERENCES", Context.MODE_PRIVATE);
         editor = sp.edit();
 
-        if(sp.getBoolean("ISLOGIN", false)){
+        if(sp.getBoolean("ISLOGIN", true)){
             String url = MainActivity.ip+"/courses/list.json";
             //final CourseList[] c = new CourseList[1];
             Toast.makeText(getActivity(), "Retrieving Courses", Toast.LENGTH_SHORT).show();
@@ -111,9 +111,4 @@ public class CoursesFragment extends Fragment {
         return rootView;
     }
 
-    /*private class CourseListAdapter extends ArrayAdapter<CourseEntry>{
-        public CourseListAdapter(){
-            super(getActivity(), R.layout.item_course, courseEntries);
-        }
-    }*/
 }
